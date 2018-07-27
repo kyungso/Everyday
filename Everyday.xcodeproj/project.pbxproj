@@ -54,14 +54,54 @@
 		BA6B203E210B477F00519C35 /* Everyday */ = {
 			isa = PBXGroup;
 			children = (
-				BA6B203F210B477F00519C35 /* AppDelegate.swift */,
-				BA6B2041210B477F00519C35 /* ViewController.swift */,
-				BA6B2043210B477F00519C35 /* Main.storyboard */,
-				BA6B2046210B478000519C35 /* Assets.xcassets */,
-				BA6B2048210B478000519C35 /* LaunchScreen.storyboard */,
-				BA6B204B210B478000519C35 /* Info.plist */,
+				BA6B2051210B47B400519C35 /* Sources */,
+				BA6B2052210B47C700519C35 /* Storyboards */,
+				BA6B2053210B47DC00519C35 /* Resources */,
 			);
 			path = Everyday;
+			sourceTree = "<group>";
+		};
+		BA6B2051210B47B400519C35 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				BA6B2055210B482C00519C35 /* Shared */,
+				BA6B2054210B482300519C35 /* Controllers */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		BA6B2052210B47C700519C35 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				BA6B2043210B477F00519C35 /* Main.storyboard */,
+				BA6B2048210B478000519C35 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		BA6B2053210B47DC00519C35 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BA6B2046210B478000519C35 /* Assets.xcassets */,
+				BA6B204B210B478000519C35 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BA6B2054210B482300519C35 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BA6B2041210B477F00519C35 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		BA6B2055210B482C00519C35 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				BA6B203F210B477F00519C35 /* AppDelegate.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,7 +321,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Everyday/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Everyday/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -298,7 +338,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Everyday/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Everyday/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
