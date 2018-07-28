@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BA650AD3210C4BC000B1AAD7 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA650AD2210C4BC000B1AAD7 /* Entry.swift */; };
+		BA650AD5210C54C400B1AAD7 /* EntryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA650AD4210C54C400B1AAD7 /* EntryRepository.swift */; };
 		BA6B2040210B477F00519C35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6B203F210B477F00519C35 /* AppDelegate.swift */; };
 		BA6B2042210B477F00519C35 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6B2041210B477F00519C35 /* ViewController.swift */; };
 		BA6B2045210B477F00519C35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA6B2043210B477F00519C35 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		BA650AD2210C4BC000B1AAD7 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		BA650AD4210C54C400B1AAD7 /* EntryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryRepository.swift; sourceTree = "<group>"; };
 		BA6B203C210B477F00519C35 /* Everyday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Everyday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA6B203F210B477F00519C35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA6B2041210B477F00519C35 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -41,6 +43,7 @@
 			isa = PBXGroup;
 			children = (
 				BA650AD2210C4BC000B1AAD7 /* Entry.swift */,
+				BA650AD4210C54C400B1AAD7 /* EntryRepository.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 			files = (
 				BA650AD3210C4BC000B1AAD7 /* Entry.swift in Sources */,
 				BA6B2042210B477F00519C35 /* ViewController.swift in Sources */,
+				BA650AD5210C54C400B1AAD7 /* EntryRepository.swift in Sources */,
 				BA6B2040210B477F00519C35 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
