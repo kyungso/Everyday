@@ -11,11 +11,18 @@ import Foundation
 class Entry{
     let id: Int
     let createdAt: Date
-    var text: String
+    var updatedAt: Date
+    var text: String{
+        didSet{
+            updatedAt = Date()
+        }
+    }
     
     init(id: Int, createdAt: Date, text: String){
         self.id = id
         self.createdAt = createdAt
+        self.updatedAt = createdAt
         self.text = text
     }
 }
+
