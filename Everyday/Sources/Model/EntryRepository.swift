@@ -17,7 +17,15 @@ protocol Everyday {
 }
 
 class InMemoryJournal: Everyday{
-    private var entries: [Int: Entry] = [:]
+    private var entries: [Int: Entry]
+    
+    init(entries: [Entry] = []) {
+        var result: [Int: Entry] = [:]
+        entries.forEach { entry in
+            result[entry.id] = entry
+        }
+        self.entries = result
+    }
     
     func add(_ entry: Entry){
         entries[entry.id] = entry

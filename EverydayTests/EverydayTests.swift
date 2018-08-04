@@ -40,4 +40,33 @@ class EverydayTests: XCTestCase {
         
     }
     
+    func testGetEntryWithId() {
+        // Setup
+        let oldEntry = Entry(id: 1, createdAt: Date(), text: "일기")
+        let journal = InMemoryJournal(entries: [oldEntry])
+        
+        // Run
+        let entry = journal.entry(with: 1)
+        
+        // Verify
+        XCTAssertEqual(entry, .some(oldEntry))
+        XCTAssertTrue(entry?.isIdentical(to: oldEntry) == true)
+    }
+    
+    func testUpdateEntry() {
+        // Setup
+        let oldEntry = Entry(id: 1, createdAt: Date(), text: "일기")
+        let journal = InMemoryJournal(entries: [oldEntry])
+        
+        // Run
+        oldEntry.text = "일기 내용을 수정했습니다"
+        journal.update(oldEntry)
+        
+        // Verify
+        let entry = journal.entry(with: 1)
+        XCTAssertEqual(entry, .some(oldEntry))
+        XCTAssertTrue(entry?.isIdentical(to: oldEntry) == true)
+        XCTAssertEqual(entry?.text, .some("일기 내용을 수정했습니다"))
+    }
+    
 }
