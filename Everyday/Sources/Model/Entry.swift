@@ -26,3 +26,13 @@ class Entry{
     }
 }
 
+extension Entry: Identifiable { }
+
+extension Entry: Equatable {
+    static func == (lhs: Entry, rhs: Entry) -> Bool{
+        return lhs.id == rhs.id
+        && lhs.createdAt == rhs.createdAt
+        && lhs.text == rhs.text
+    }
+}
+

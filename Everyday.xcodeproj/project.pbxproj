@@ -10,6 +10,7 @@
 		BA650AD3210C4BC000B1AAD7 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA650AD2210C4BC000B1AAD7 /* Entry.swift */; };
 		BA650AD5210C54C400B1AAD7 /* EntryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA650AD4210C54C400B1AAD7 /* EntryRepository.swift */; };
 		BA650ADD210C57D800B1AAD7 /* EverydayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA650ADC210C57D800B1AAD7 /* EverydayTests.swift */; };
+		BA650AE5211540E700B1AAD7 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA650AE4211540E700B1AAD7 /* Identifiable.swift */; };
 		BA6B2040210B477F00519C35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6B203F210B477F00519C35 /* AppDelegate.swift */; };
 		BA6B2042210B477F00519C35 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6B2041210B477F00519C35 /* ViewController.swift */; };
 		BA6B2045210B477F00519C35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA6B2043210B477F00519C35 /* Main.storyboard */; };
@@ -33,6 +34,7 @@
 		BA650ADA210C57D800B1AAD7 /* EverydayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EverydayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA650ADC210C57D800B1AAD7 /* EverydayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EverydayTests.swift; sourceTree = "<group>"; };
 		BA650ADE210C57D800B1AAD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA650AE4211540E700B1AAD7 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		BA6B203C210B477F00519C35 /* Everyday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Everyday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA6B203F210B477F00519C35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA6B2041210B477F00519C35 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				BA6B203F210B477F00519C35 /* AppDelegate.swift */,
+				BA650AE4211540E700B1AAD7 /* Identifiable.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				BA650AD3210C4BC000B1AAD7 /* Entry.swift in Sources */,
 				BA6B2042210B477F00519C35 /* ViewController.swift in Sources */,
 				BA650AD5210C54C400B1AAD7 /* EntryRepository.swift in Sources */,
+				BA650AE5211540E700B1AAD7 /* Identifiable.swift in Sources */,
 				BA6B2040210B477F00519C35 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

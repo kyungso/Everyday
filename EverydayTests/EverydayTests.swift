@@ -11,7 +11,7 @@ import XCTest
 
 class EverydayTests: XCTestCase {
     
-    func testExample() {
+    func testEditEntryText() {
         // Setup
         let entry = Entry(id: 0, createdAt: Date(), text: "첫 번째 일기")
         
@@ -23,11 +23,21 @@ class EverydayTests: XCTestCase {
         // Teardown
     }
     
-//    func testPerformanceExample() {
-//        // This is an example of a performance test case.
-//        self.measure {
-//            // Put the code you want to measure the time of here.
-//        }
-//    }
+    func testAddEntryToJournal() {
+        //Setup
+        let journal = InMemoryJournal()
+        let newEntry = Entry(id: 1, createdAt: Date(), text: "일기")
+        
+        // Run
+        journal.add(newEntry)
+        
+        // Verify
+        let entryInJournal: Entry? = journal.entry(with: 1)
+        
+        XCTAssertEqual(entryInJournal, .some(newEntry))
+        XCTAssertTrue(entryInJournal === newEntry)
+        XCTAssertTrue(entryInJournal?.isIdentical(to: newEntry) == true)
+        
+    }
     
 }
