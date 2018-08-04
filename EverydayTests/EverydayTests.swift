@@ -9,7 +9,22 @@
 import XCTest
 @testable import Everyday
 
+//extension Entry {
+//    static var dayBeforeYesterday: Entry { return Entry(id: 1, createdAt: Date.distantPast, text: "그저께 일기") }
+//    static var yesterDay: Entry { return Entry(id: 2, createdAt: Date(), text: "어제 일기") }
+//    static var today: Entry { return Entry(id: 3, createdAt: Date.distantFuture, text: "오늘 일기") }
+//}
+// 공통선언을 하면 밑에 let today = Entry.today 로 작성가능
+
 class EverydayTests: XCTestCase {
+    
+//    공통 선언
+//    var newEntry: Entry!
+//    override func setUp(){
+//        newEntry = Entry(id: 0, createdAt: Date(), text: "첫 번째 일기")
+//    }
+//    override func tearDown() {
+//    }
     
     func testEditEntryText() {
         // Setup
