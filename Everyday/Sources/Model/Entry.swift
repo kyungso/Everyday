@@ -19,6 +19,3 @@ class Entry{
         self.text = text
     }
 }
-
-let newEntry = Entry(id: 0, createdAt: Date(), text: "첫 번째 일기")
-
