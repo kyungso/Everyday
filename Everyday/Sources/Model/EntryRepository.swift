@@ -9,18 +9,20 @@
 import Foundation
 
 protocol Everyday {
+    var numberOfEntries: Int { get }
     func add(_ entry: Entry)
     func update(_ entry: Entry)
     func remove(_ entry: Entry)
-    func entry(with id: Int) -> Entry?
+    func entry(with id: UUID) -> Entry?
     func recentEntries(max: Int) -> [Entry]
 }
 
 class InMemoryJournal: Everyday{
-    private var entries: [Int: Entry]
+    private var entries: [UUID: Entry]
+    var numberOfEntries: Int { return entries.count }
     
     init(entries: [Entry] = []) {
-        var result: [Int: Entry] = [:]
+        var result: [UUID: Entry] = [:]
         entries.forEach { entry in
             result[entry.id] = entry
         }
@@ -36,7 +38,7 @@ class InMemoryJournal: Everyday{
     func remove(_ entry: Entry){
         entries[entry.id] = nil
     }
-    func entry(with id: Int) -> Entry?{
+    func entry(with id: UUID) -> Entry?{
         return entries[id]
     }
     func recentEntries(max: Int) -> [Entry]{

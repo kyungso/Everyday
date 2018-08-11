@@ -9,7 +9,7 @@
 import Foundation
 
 class Entry{
-    let id: Int
+    let id: UUID
     let createdAt: Date
     var updatedAt: Date
     var text: String{
@@ -18,7 +18,7 @@ class Entry{
         }
     }
     
-    init(id: Int, createdAt: Date, text: String){
+    init(id: UUID = UUID(), createdAt: Date = Date(), text: String){
         self.id = id
         self.createdAt = createdAt
         self.updatedAt = createdAt

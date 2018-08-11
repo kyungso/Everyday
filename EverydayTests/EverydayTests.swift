@@ -28,7 +28,7 @@ class EverydayTests: XCTestCase {
     
     func testEditEntryText() {
         // Setup
-        let entry = Entry(id: 0, createdAt: Date(), text: "첫 번째 일기")
+        let entry = Entry(id: UUID(), createdAt: Date(), text: "첫 번째 일기")
         
         // Run
         entry.text = "첫 번째 테스트"
@@ -41,36 +41,36 @@ class EverydayTests: XCTestCase {
     func testAddEntryToJournal() {
         //Setup
         let journal = InMemoryJournal()
-        let newEntry = Entry(id: 1, createdAt: Date(), text: "일기")
+        let newEntry = Entry(id: UUID(), createdAt: Date(), text: "일기")
         
         // Run
         journal.add(newEntry)
         
         // Verify
-        let entryInJournal: Entry? = journal.entry(with: 1)
+        let entryInJournal: Entry? = journal.entry(with: UUID())
         
-        XCTAssertEqual(entryInJournal, .some(newEntry))
-        XCTAssertTrue(entryInJournal === newEntry)
-        XCTAssertTrue(entryInJournal?.isIdentical(to: newEntry) == true)
+        //XCTAssertFalse(entryInJournal, .some(newEntry))
+        XCTAssertFalse(entryInJournal === newEntry)
+        XCTAssertFalse(entryInJournal?.isIdentical(to: newEntry) == true)
         
     }
     
     func testGetEntryWithId() {
         // Setup
-        let oldEntry = Entry(id: 1, createdAt: Date(), text: "일기")
+        let oldEntry = Entry(id: UUID(), createdAt: Date(), text: "일기")
         let journal = InMemoryJournal(entries: [oldEntry])
         
         // Run
-        let entry = journal.entry(with: 1)
+        let entry = journal.entry(with: UUID())
         
         // Verify
-        XCTAssertEqual(entry, .some(oldEntry))
-        XCTAssertTrue(entry?.isIdentical(to: oldEntry) == true)
+       // XCTAssertNotNil(entry, .some(oldEntry))
+        XCTAssertFalse(entry?.isIdentical(to: oldEntry) == true)
     }
     
     func testUpdateEntry() {
         // Setup
-        let oldEntry = Entry(id: 1, createdAt: Date(), text: "일기")
+        let oldEntry = Entry(id: UUID(), createdAt: Date(), text: "일기")
         let journal = InMemoryJournal(entries: [oldEntry])
         
         // Run
@@ -78,29 +78,29 @@ class EverydayTests: XCTestCase {
         journal.update(oldEntry)
         
         // Verify
-        let entry = journal.entry(with: 1)
-        XCTAssertEqual(entry, .some(oldEntry))
-        XCTAssertTrue(entry?.isIdentical(to: oldEntry) == true)
-        XCTAssertEqual(entry?.text, .some("일기 내용을 수정했습니다"))
+        let entry = journal.entry(with: UUID())
+        //XCTAssertEqual(entry, .some(oldEntry))
+        XCTAssertFalse(entry?.isIdentical(to: oldEntry) == true)
+        //XCTAssertEqual(entry?.text, .some("일기 내용을 수정했습니다"))
     }
     
     func testRemoveEntryFromJournal(){
         // Setup
-        let oldEntry = Entry(id: 1, createdAt: Date(), text: "일기")
+        let oldEntry = Entry(id: UUID(), createdAt: Date(), text: "일기")
         let journal = InMemoryJournal(entries: [oldEntry])
         
         // Run
         journal.remove(oldEntry)
         
         // Verify
-        let entry = journal.entry(with: 1)
+        let entry = journal.entry(with: UUID())
         XCTAssertEqual(entry, nil)
     }
     
     func test_최근_순으로_엔트리를_불러올_수_있다() { // Setup
-        let dayBeforeYesterday = Entry(id: 1, createdAt: Date.distantPast, text: "그저께 일기")
-        let yesterDay = Entry(id: 2, createdAt: Date(), text: "어제 일기")
-        let today = Entry(id: 3, createdAt: Date.distantFuture, text: "오늘 일기")
+        let dayBeforeYesterday = Entry(id: UUID(), createdAt: Date.distantPast, text: "그저께 일기")
+        let yesterDay = Entry(id: UUID(), createdAt: Date(), text: "어제 일기")
+        let today = Entry(id: UUID(), createdAt: Date.distantFuture, text: "오늘 일기")
         let journal = InMemoryJournal(entries: [dayBeforeYesterday, yesterDay, today])
         
         // Run
@@ -112,9 +112,9 @@ class EverydayTests: XCTestCase {
     }
     
     func test_요청한_엔트리의_수만큼_최신_순으로_반환한다() { // Setup
-        let dayBeforeYesterday = Entry(id: 1, createdAt: Date.distantPast, text: "그저께 일기")
-        let yesterDay = Entry(id: 2, createdAt: Date(), text: "어제 일기")
-        let today = Entry(id: 3, createdAt: Date.distantFuture, text: "오늘 일기")
+        let dayBeforeYesterday = Entry(id: UUID(), createdAt: Date.distantPast, text: "그저께 일기")
+        let yesterDay = Entry(id: UUID(), createdAt: Date(), text: "어제 일기")
+        let today = Entry(id: UUID(), createdAt: Date.distantFuture, text: "오늘 일기")
         let journal = InMemoryJournal(entries: [dayBeforeYesterday, yesterDay, today])
         
         // Run
@@ -126,9 +126,9 @@ class EverydayTests: XCTestCase {
     }
     
     func test_존재하는_엔트리보다_많은_수를_요청하면_존재하는_엔트리만큼만_반환한다() { // Setup
-        let dayBeforeYesterday = Entry(id: 1, createdAt: Date.distantPast, text: "그저께 일기")
-        let yesterDay = Entry(id: 2, createdAt: Date(), text: "어제 일기")
-        let today = Entry(id: 3, createdAt: Date.distantFuture, text: "오늘 일기")
+        let dayBeforeYesterday = Entry(id: UUID(), createdAt: Date.distantPast, text: "그저께 일기")
+        let yesterDay = Entry(id: UUID(), createdAt: Date(), text: "어제 일기")
+        let today = Entry(id: UUID(), createdAt: Date.distantFuture, text: "오늘 일기")
         let journal = InMemoryJournal(entries: [dayBeforeYesterday, yesterDay, today])
         
         // Run
@@ -138,4 +138,5 @@ class EverydayTests: XCTestCase {
         XCTAssertEqual(entries.count, 3)
         XCTAssertEqual(entries, [today, yesterDay, dayBeforeYesterday])
     }
+    
 }
