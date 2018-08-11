@@ -83,10 +83,9 @@ button.addTarget(self, action: #selector(editEntry), for: .touchUpInside)
 """
 class EntryViewController: UIViewController {
 
-    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var button: UIButton!
     @IBOutlet weak var textViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var button: UIBarButtonItem!
     
     private let journal: Everyday = InMemoryJournal()
     private var editingEntry: Entry?
@@ -96,9 +95,9 @@ class EntryViewController: UIViewController {
         
         textView.text = code
         
-        dateLabel.text = DateFormatter.entryDateFormatter.string(from: Date())
+        title = DateFormatter.entryDateFormatter.string(from: Date())
 
-        button.addTarget(self, action: #selector(saveEntry(_:)), for: .touchUpInside)
+        button.action = #selector(saveEntry(_:))
         
         NotificationCenter.default
             .addObserver(self,
@@ -158,22 +157,12 @@ class EntryViewController: UIViewController {
     }
     
     private func updateSubviews(for isEditing: Bool) {
-        if isEditing {
-            textView.isEditable = true
-            textView.becomeFirstResponder()
+        button.image = isEditing ? #imageLiteral(resourceName: "saveIcon") : #imageLiteral(resourceName: "editIcon")
+        button.target = self
+        button.action = isEditing ? #selector(saveEntry(_:)) : #selector(editEntry)
         
-            button.setTitle("저장하기", for: .normal)
-            button.removeTarget(self, action: nil, for: .touchUpInside)
-            button.addTarget(self, action: #selector(saveEntry(_:)), for: .touchUpInside)
-        } else {
-            textView.isEditable = false
-            textView.resignFirstResponder()
-            
-            button.setTitle("수정하기", for: .normal)
-            button.removeTarget(self, action: nil, for: .touchUpInside)
-            button.addTarget(self, action: #selector(editEntry), for: .touchUpInside)
-        }
+        textView.isEditable = isEditing
+        _ = isEditing ? textView.becomeFirstResponder() : textView.resignFirstResponder()
     }
-
 }
 

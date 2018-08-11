@@ -16,8 +16,9 @@
 		BA6B2040210B477F00519C35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6B203F210B477F00519C35 /* AppDelegate.swift */; };
 		BA6B2042210B477F00519C35 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6B2041210B477F00519C35 /* EntryViewController.swift */; };
 		BA6B2045210B477F00519C35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA6B2043210B477F00519C35 /* Main.storyboard */; };
-		BA6B2047210B478000519C35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA6B2046210B478000519C35 /* Assets.xcassets */; };
 		BA6B204A210B478000519C35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA6B2048210B478000519C35 /* LaunchScreen.storyboard */; };
+		BA9ED6FE211EC65F00155C20 /* UIKit+Everyday.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9ED6FD211EC65F00155C20 /* UIKit+Everyday.swift */; };
+		BA9ED702211ECA4D00155C20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA9ED701211ECA4D00155C20 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,9 +48,10 @@
 		BA6B203F210B477F00519C35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA6B2041210B477F00519C35 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 		BA6B2044210B477F00519C35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BA6B2046210B478000519C35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA6B2049210B478000519C35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA6B204B210B478000519C35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA9ED6FD211EC65F00155C20 /* UIKit+Everyday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Everyday.swift"; sourceTree = "<group>"; };
+		BA9ED701211ECA4D00155C20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,7 +164,7 @@
 		BA6B2053210B47DC00519C35 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				BA6B2046210B478000519C35 /* Assets.xcassets */,
+				BA9ED701211ECA4D00155C20 /* Assets.xcassets */,
 				BA6B204B210B478000519C35 /* Info.plist */,
 			);
 			path = Resources;
@@ -181,6 +183,7 @@
 			children = (
 				BA6B203F210B477F00519C35 /* AppDelegate.swift */,
 				BA650AE4211540E700B1AAD7 /* Identifiable.swift */,
+				BA9ED6FD211EC65F00155C20 /* UIKit+Everyday.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -278,7 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA6B204A210B478000519C35 /* LaunchScreen.storyboard in Resources */,
-				BA6B2047210B478000519C35 /* Assets.xcassets in Resources */,
+				BA9ED702211ECA4D00155C20 /* Assets.xcassets in Resources */,
 				BA6B2045210B477F00519C35 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -374,6 +377,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA650AD3210C4BC000B1AAD7 /* Entry.swift in Sources */,
+				BA9ED6FE211EC65F00155C20 /* UIKit+Everyday.swift in Sources */,
 				BA6B2042210B477F00519C35 /* EntryViewController.swift in Sources */,
 				BA650AD5210C54C400B1AAD7 /* EntryRepository.swift in Sources */,
 				BA650AE5211540E700B1AAD7 /* Identifiable.swift in Sources */,
@@ -571,7 +575,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2DBBFD36BF8CD1DF41AC9292 /* Pods-Everyday.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "$(SRCROOT)/Everyday/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
@@ -590,7 +593,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 09B626E33D638DA9C91C6A1E /* Pods-Everyday.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "$(SRCROOT)/Everyday/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
