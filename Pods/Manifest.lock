@@ -1,16 +1,20 @@
 PODS:
   - Nimble (7.0.3)
+  - SnapKit (4.0.0)
 
 DEPENDENCIES:
   - Nimble (~> 7.0.0)
+  - SnapKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Nimble
+    - SnapKit
 
 SPEC CHECKSUMS:
   Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
 
-PODFILE CHECKSUM: e2ff9830db881449b6f02d5a29eefbd9690c149e
+PODFILE CHECKSUM: 3376eda1053a10a6ffbe5c87bfcfac1839be0a43
 
 COCOAPODS: 1.5.3
