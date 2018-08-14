@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import Nimble
 @testable import Everyday
 
 //extension Entry {
@@ -129,6 +130,7 @@ class EverydayTests: XCTestCase {
         let dayBeforeYesterday = Entry(id: UUID(), createdAt: Date.distantPast, text: "그저께 일기")
         let yesterDay = Entry(id: UUID(), createdAt: Date(), text: "어제 일기")
         let today = Entry(id: UUID(), createdAt: Date.distantFuture, text: "오늘 일기")
+        
         let journal = InMemoryJournal(entries: [dayBeforeYesterday, yesterDay, today])
         
         // Run
@@ -137,6 +139,17 @@ class EverydayTests: XCTestCase {
         // Verify
         XCTAssertEqual(entries.count, 3)
         XCTAssertEqual(entries, [today, yesterDay, dayBeforeYesterday])
+    }
+    
+    func testJournalReturnsNilWhenMaxIsNegative() {
+        // Setup
+        let journal = InMemoryJournal()
+        
+        // Run
+        let entries = journal.recentEntries(max: -10)
+        
+        // Verify
+        expect(entries).to(beEmpty())
     }
     
 }

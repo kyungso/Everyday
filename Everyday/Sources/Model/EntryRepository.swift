@@ -42,6 +42,8 @@ class InMemoryJournal: Everyday{
         return entries[id]
     }
     func recentEntries(max: Int) -> [Entry]{
+        guard max >= 0 else { return [] }
+        
         let result = entries
             .values
             .sorted{ $0.createdAt > $1.createdAt }
