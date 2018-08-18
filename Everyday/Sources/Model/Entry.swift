@@ -8,27 +8,25 @@
 
 import Foundation
 
-class Entry{
+protocol EntryType: Identifiable, Equatable {
+    var createdAt: Date { get }
+    var text: String { get set }
+}
+
+class Entry: EntryType{
     let id: UUID
     let createdAt: Date
-    var updatedAt: Date
-    var text: String{
-        didSet{
-            updatedAt = Date()
-        }
-    }
+    var text: String
     
     init(id: UUID = UUID(), createdAt: Date = Date(), text: String){
         self.id = id
         self.createdAt = createdAt
-        self.updatedAt = createdAt
         self.text = text
     }
 }
 
-extension Entry: Identifiable { }
 
-extension Entry: Equatable {
+extension Entry {
     static func == (lhs: Entry, rhs: Entry) -> Bool{
         return lhs.id == rhs.id
         && lhs.createdAt == rhs.createdAt
