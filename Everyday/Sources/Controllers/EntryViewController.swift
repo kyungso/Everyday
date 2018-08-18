@@ -87,8 +87,10 @@ class EntryViewController: UIViewController {
     @IBOutlet weak var textViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var button: UIBarButtonItem!
     
-    private let journal: Everyday = InMemoryJournal()
+    private let journal: EntryRepository = InMemoryEntryRepository()
     private var editingEntry: Entry?
+    
+    var environmnet: Environment!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -143,10 +145,10 @@ class EntryViewController: UIViewController {
     @objc func saveEntry(_ sender: UIButton) {
         if let editing = self.editingEntry {
             editing.text = textView.text
-            journal.update(editing)
+            environmnet.entryRepository.update(editing)
         }else {
             let entry: Entry = Entry(text: textView.text)
-            journal.add(entry)
+            environmnet.entryRepository.add(entry)
             editingEntry = entry
         }
         updateSubviews(for: false)

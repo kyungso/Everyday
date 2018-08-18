@@ -50,7 +50,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1076" y="132.68365817091455"/>
+            <point key="canvasLocation" x="2182" y="133"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ADC-QP-PUf">
@@ -63,12 +63,46 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="0CR-WF-jMf"/>
+                        <segue destination="yzL-an-NeY" kind="relationship" relationship="rootViewController" id="bHz-BK-sBA"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nGP-R8-kpQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
+            <point key="canvasLocation" x="-66" y="133"/>
+        </scene>
+        <!--Timeline View Controller-->
+        <scene sceneID="49K-za-UQ8">
+            <objects>
+                <viewController id="yzL-an-NeY" customClass="TimelineViewController" customModule="Everyday" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0ah-OH-kCM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x8U-3x-hLS">
+                                <rect key="frame" x="68" y="323" width="238" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="gQ6-0t-AnZ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="N5C-b8-KLX">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="VUC-5N-O4o">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="show" identifier="addEntry" id="fMy-zT-DBU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="entryCountLabel" destination="x8U-3x-hLS" id="OUI-KU-b5V"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CqL-gC-UgW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1117.5999999999999" y="132.68365817091455"/>
         </scene>
     </scenes>
 </document>

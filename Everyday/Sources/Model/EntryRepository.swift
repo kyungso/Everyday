@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol Everyday {
+protocol EntryRepository {
     var numberOfEntries: Int { get }
     func add(_ entry: Entry)
     func update(_ entry: Entry)
@@ -17,9 +17,8 @@ protocol Everyday {
     func recentEntries(max: Int) -> [Entry]
 }
 
-class InMemoryJournal: Everyday{
+class InMemoryEntryRepository: EntryRepository{
     private var entries: [UUID: Entry]
-    var numberOfEntries: Int { return entries.count }
     
     init(entries: [Entry] = []) {
         var result: [UUID: Entry] = [:]
@@ -27,6 +26,16 @@ class InMemoryJournal: Everyday{
             result[entry.id] = entry
         }
         self.entries = result
+    }
+    
+    static var shared: InMemoryEntryRepository = {
+        let repository = InMemoryEntryRepository()
+        return repository
+    }()
+    
+    var numberOfEntries: Int {
+        return entries.count
+        
     }
     
     func add(_ entry: Entry){
