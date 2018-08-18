@@ -79,7 +79,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x8U-3x-hLS">
-                                <rect key="frame" x="147" y="323" width="80" height="21"/>
+                                <rect key="frame" x="68" y="323" width="238" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -92,7 +92,7 @@
                     <navigationItem key="navigationItem" id="N5C-b8-KLX">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="VUC-5N-O4o">
                             <connections>
-                                <segue destination="BYZ-38-t0r" kind="show" id="fMy-zT-DBU"/>
+                                <segue destination="BYZ-38-t0r" kind="show" identifier="addEntry" id="fMy-zT-DBU"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
