@@ -16,7 +16,7 @@ class TimelineViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Journal"
+        title = "Everyday"
     }
 
     override func viewWillAppear(_ animated: Bool) {
