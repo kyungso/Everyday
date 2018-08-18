@@ -9,32 +9,61 @@
 import UIKit
 
 class TimelineViewController: UIViewController {
-    @IBOutlet weak var entryCountLabel: UILabel!
+    
+    @IBOutlet weak var tableview: UITableView!
     
     var environment: Environment!
+    private var entries: [Entry] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Everyday"
+        tableview.dataSource = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        entryCountLabel.text = environment.entryRepository.numberOfEntries > 0
-            ? "엔트리 갯수: \(environment.entryRepository.numberOfEntries)"
-            : "엔트리 없음"
+        entries = environment.entryRepository.recentEntries(max: environment.entryRepository.numberOfEntries)
+        
+        tableview.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case .some("addEntry"):
-            if let timelinevc = segue.destination as? EntryViewController {
-                timelinevc.environmnet = environment
+            if let entryVC = segue.destination as? EntryViewController {
+                entryVC.environmnet = environment
+            }
+        case .some("showEntry"):
+            if
+                let entryVC = segue.destination as? EntryViewController,
+                let selectedIndexPath = tableview.indexPathForSelectedRow {
+                entryVC.environmnet = environment
+                let entry = entries[selectedIndexPath.row]
+                entryVC.editingEntry = entry
             }
         default:
             break
         }
     }
 }
+    
+extension TimelineViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return entries.count
+    }
+        
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let tableViewCell = tableview.dequeueReusableCell(withIdentifier: "EntryCell", for: indexPath)
+        
+        let entry = entries[indexPath.row]
+       
+        tableViewCell.textLabel?.text = "\(entry.text)"
+        tableViewCell.detailTextLabel?.text = DateFormatter.entryDateFormatter.string(from: entry.createdAt)
+        
+        return tableViewCell
+    }
+}
+

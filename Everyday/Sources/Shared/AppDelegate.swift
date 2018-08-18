@@ -14,8 +14,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     var environment: Environment!
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        customizeNavigationBar()
+        
+        injectEnvironment()
+        
+        return true
+    }
+
+    private func customizeNavigationBar() {
         if let navViewController = window?.rootViewController as? UINavigationController {
             navViewController.navigationBar.prefersLargeTitles = true
             navViewController.navigationBar.barStyle = .black
@@ -24,18 +33,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             navViewController.navigationBar.barTintColor = UIColor(patternImage: bgimage!)
             navViewController.navigationBar.tintColor = UIColor.white
         }
-        
-        injectEnvironment()
-        
-        return true
     }
-
+    
     private func injectEnvironment(){
         guard
             let navViewController = window?.rootViewController as? UINavigationController,
             let timelineViewController = navViewController.topViewController as? TimelineViewController
             else { return }
-        timelineViewController.environment = Environment()
+        let entries: [Entry] = (1...50).map { number in
+            let text = "\(number)일째 일기"
+            return Entry(text: text)
+        }
+        let entryRepo = InMemoryEntryRepository(entries: entries)
+        timelineViewController.environment = Environment(entryRepository: entryRepo)
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
