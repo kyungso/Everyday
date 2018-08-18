@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -40,10 +41,18 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="Rup-uv-Pk4">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="LBm-SV-wWd"/>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" id="LBm-SV-wWd"/>
+                            <barButtonItem title="Item" image="deleteIcon" id="8Sk-kH-it0">
+                                <connections>
+                                    <action selector="removeEntry:" destination="BYZ-38-t0r" id="SXY-80-9Bl"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="button" destination="LBm-SV-wWd" id="fr5-1Q-YaO"/>
+                        <outlet property="removeButton" destination="8Sk-kH-it0" id="5q5-kR-ZKp"/>
                         <outlet property="textView" destination="JXJ-B9-0fp" id="5xb-oV-IM1"/>
                         <outlet property="textViewBottomConstraint" destination="t27-Cz-1e1" id="9Um-IN-iX3"/>
                     </connections>
@@ -137,6 +146,9 @@
             <point key="canvasLocation" x="1117.5999999999999" y="132.68365817091455"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="deleteIcon" width="24" height="24"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="NrL-vJ-VWw"/>
     </inferredMetricsTieBreakers>

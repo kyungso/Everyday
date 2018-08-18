@@ -19,6 +19,7 @@ class TimelineViewController: UIViewController {
         super.viewDidLoad()
         
         title = "Everyday"
+        
         tableview.dataSource = self
     }
 
@@ -31,18 +32,21 @@ class TimelineViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier {
-        case .some("addEntry"):
+        guard let identifier = segue.identifier else { return }
+        switch identifier {
+        case "addEntry":
             if let entryVC = segue.destination as? EntryViewController {
                 entryVC.environmnet = environment
+                entryVC.delegate = self
             }
-        case .some("showEntry"):
+        case "showEntry":
             if
                 let entryVC = segue.destination as? EntryViewController,
                 let selectedIndexPath = tableview.indexPathForSelectedRow {
                 entryVC.environmnet = environment
                 let entry = entries[selectedIndexPath.row]
                 entryVC.editingEntry = entry
+                entryVC.delegate = self
             }
         default:
             break
@@ -64,6 +68,12 @@ extension TimelineViewController: UITableViewDataSource {
         tableViewCell.detailTextLabel?.text = DateFormatter.entryDateFormatter.string(from: entry.createdAt)
         
         return tableViewCell
+    }
+}
+
+extension TimelineViewController: EntryViewControllerDelegate {
+    func didRemoveEntry(_ entry: Entry) {
+        navigationController?.popViewController(animated: true)
     }
 }
 
