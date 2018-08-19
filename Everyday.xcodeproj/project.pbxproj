@@ -21,6 +21,8 @@
 		BA6B204A210B478000519C35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA6B2048210B478000519C35 /* LaunchScreen.storyboard */; };
 		BA9ED6FE211EC65F00155C20 /* UIKit+Everyday.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9ED6FD211EC65F00155C20 /* UIKit+Everyday.swift */; };
 		BA9ED702211ECA4D00155C20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA9ED701211ECA4D00155C20 /* Assets.xcassets */; };
+		BAA9BA612127F9A0000D5C54 /* EntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA9BA602127F9A0000D5C54 /* EntryTableViewCell.swift */; };
+		BAA9BA632127FEDB000D5C54 /* Foundation+Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA9BA622127FEDB000D5C54 /* Foundation+Journal.swift */; };
 		BACB2D7E2122FE7600D068C9 /* EntryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACB2D7D2122FE7600D068C9 /* EntryTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +57,8 @@
 		BA6B204B210B478000519C35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA9ED6FD211EC65F00155C20 /* UIKit+Everyday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Everyday.swift"; sourceTree = "<group>"; };
 		BA9ED701211ECA4D00155C20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BAA9BA602127F9A0000D5C54 /* EntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryTableViewCell.swift; sourceTree = "<group>"; };
+		BAA9BA622127FEDB000D5C54 /* Foundation+Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Foundation+Journal.swift"; sourceTree = "<group>"; };
 		BACB2D7D2122FE7600D068C9 /* EntryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryTests.swift; sourceTree = "<group>"; };
 		E727F37A0864021547CC1109 /* Pods_EverydayTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EverydayTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC5C830E360BC814557BB7BE /* Pods-EverydayTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EverydayTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EverydayTests/Pods-EverydayTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -182,6 +186,7 @@
 			children = (
 				BA6B2041210B477F00519C35 /* EntryViewController.swift */,
 				BA082D912127AE2E00AA7EE5 /* TimelineViewController.swift */,
+				BAA9BA602127F9A0000D5C54 /* EntryTableViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -193,6 +198,7 @@
 				BA650AE4211540E700B1AAD7 /* Identifiable.swift */,
 				BA9ED6FD211EC65F00155C20 /* UIKit+Everyday.swift */,
 				BA082D972127BA8D00AA7EE5 /* Environment.swift */,
+				BAA9BA622127FEDB000D5C54 /* Foundation+Journal.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -386,12 +392,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAA9BA632127FEDB000D5C54 /* Foundation+Journal.swift in Sources */,
 				BA650AD3210C4BC000B1AAD7 /* Entry.swift in Sources */,
 				BA082D982127BA8D00AA7EE5 /* Environment.swift in Sources */,
 				BA9ED6FE211EC65F00155C20 /* UIKit+Everyday.swift in Sources */,
 				BA6B2042210B477F00519C35 /* EntryViewController.swift in Sources */,
 				BA650AD5210C54C400B1AAD7 /* EntryRepository.swift in Sources */,
 				BA082D922127AE2E00AA7EE5 /* TimelineViewController.swift in Sources */,
+				BAA9BA612127F9A0000D5C54 /* EntryTableViewCell.swift in Sources */,
 				BA650AE5211540E700B1AAD7 /* Identifiable.swift in Sources */,
 				BA6B2040210B477F00519C35 /* AppDelegate.swift in Sources */,
 			);
