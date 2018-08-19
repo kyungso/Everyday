@@ -8,14 +8,6 @@
 
 import UIKit
 
-extension DateFormatter {
-    static var entryDateFormatter: DateFormatter = {
-        let df = DateFormatter()
-        df.dateFormat = "yyyy. M. dd. EEE"
-        return df
-    }()
-}
-
 protocol EntryViewControllerDelegate: class {
     func didRemoveEntry(_ entry: Entry)
 }

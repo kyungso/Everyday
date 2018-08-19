@@ -13,7 +13,23 @@ class TimelineViewController: UIViewController {
     @IBOutlet weak var tableview: UITableView!
     
     var environment: Environment!
-    private var entries: [Entry] = []
+    
+    private var dates: [Date] = []
+    private var entries: [Entry] {
+        return environment.entryRepository.recentEntries(max: environment.entryRepository.numberOfEntries)
+    }
+    
+//    private func entries(for date: Date) -> [Entry] {
+//        return entries
+//            .filter { $0.createdAt.hmsRemoved == date }
+//    }
+//
+//    private func entry(for indexPath: IndexPath) -> Entry {
+//        let date = dates[indexPath.section]
+//        let entriesOfDate = entries(for: date)
+//        let entry = entriesOfDate[indexPath.row]
+//        return entry
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,9 +41,6 @@ class TimelineViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        entries = environment.entryRepository.recentEntries(max: environment.entryRepository.numberOfEntries)
-        
         tableview.reloadData()
     }
     
@@ -60,12 +73,13 @@ extension TimelineViewController: UITableViewDataSource {
     }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tableViewCell = tableview.dequeueReusableCell(withIdentifier: "EntryCell", for: indexPath)
+        let tableViewCell = tableview.dequeueReusableCell(withIdentifier: "EntryCell", for: indexPath) as! EntryTableViewCell
         
-        let entry = entries[indexPath.row]
+        let entry = self.entries[indexPath.row]
        
-        tableViewCell.textLabel?.text = "\(entry.text)"
-        tableViewCell.detailTextLabel?.text = DateFormatter.entryDateFormatter.string(from: entry.createdAt)
+        tableViewCell.entryTextLabel.text = entry.text
+        tableViewCell.timeLabel.text = DateFormatter.entryTimeFormatter.string(from: entry.createdAt)
+        tableViewCell.ampmLabel.text = DateFormatter.ampmFormatter.string(from: entry.createdAt)
         
         return tableViewCell
     }

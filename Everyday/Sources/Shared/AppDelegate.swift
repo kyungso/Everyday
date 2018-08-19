@@ -28,26 +28,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let navViewController = window?.rootViewController as? UINavigationController {
             navViewController.navigationBar.prefersLargeTitles = true
             navViewController.navigationBar.barStyle = .black
+            navViewController.navigationBar.tintColor = UIColor.white
             
             let bgimage = UIImage.gradientImage(with: [.gradientStart, .gradientEnd], size: CGSize(width: UIScreen.main.bounds.size.width, height: 1))
             navViewController.navigationBar.barTintColor = UIColor(patternImage: bgimage!)
-            navViewController.navigationBar.tintColor = UIColor.white
         }
     }
     
     private func injectEnvironment(){
-        guard
-            let navViewController = window?.rootViewController as? UINavigationController,
-            let timelineViewController = navViewController.topViewController as? TimelineViewController
-            else { return }
-        let entries: [Entry] = (1...50).map { number in
-            let text = "\(number)일째 일기"
-            return Entry(text: text)
-        }
-        let entryRepo = InMemoryEntryRepository(entries: entries)
-        timelineViewController.environment = Environment(entryRepository: entryRepo)
-    }
+        
+        if
+            let navigationController = window?.rootViewController as? UINavigationController,
+            let timelineViewController = navigationController.topViewController as? TimelineViewController {
+            let entries: [Entry] = (1...50).map { number in
+                let text = "\(number)일째 일기"
+                return Entry(text: text)
+            }
     
+            let repo = InMemoryEntryRepository(entries: entries)
+            timelineViewController.environment = Environment(entryRepository: repo)
+        }
+    }
+        
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
