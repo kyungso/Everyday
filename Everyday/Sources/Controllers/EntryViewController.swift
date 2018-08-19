@@ -56,7 +56,7 @@ class EntryViewController: UIViewController {
             let animationCurve = (userInfo[UIKeyboardAnimationCurveUserInfoKey] as? UInt)
             else { return }
         
-        let isKeyboardWillShow:Bool = note.name == Notification.Name.UIKeyboardWillShow
+        let isKeyboardWillShow: Bool = note.name == Notification.Name.UIKeyboardWillShow
         let keyboardHeight = isKeyboardWillShow
             ? keyboardFrameValue.cgRectValue.height
             : 0
@@ -70,7 +70,7 @@ class EntryViewController: UIViewController {
             animations: {
                 self.textViewBottomConstraint.constant = -keyboardHeight
                 self.view.layoutIfNeeded()
-        },
+            },
             completion: nil
         )
     }
