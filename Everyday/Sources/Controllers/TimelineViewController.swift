@@ -31,24 +31,6 @@ class TimelineViewController: UIViewController {
         return entry
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        title = "Everyday"
-    
-        tableview.dataSource = self
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        dates = entries
-            .compactMap { $0.createdAt.hmsRemoved }
-            .unique()
-        
-        tableview.reloadData()
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else { return }
         switch identifier {
@@ -69,6 +51,25 @@ class TimelineViewController: UIViewController {
             break
         }
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        title = "Everyday"
+        tableview.delegate = self
+        //tableview.dataSource = self
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        dates = entries
+            .compactMap { $0.createdAt.hmsRemoved }
+            .unique()
+        
+        tableview.reloadData()
+    }
+    
 }
     
 extension TimelineViewController: UITableViewDataSource {
@@ -96,6 +97,49 @@ extension TimelineViewController: UITableViewDataSource {
         tableViewCell.ampmLabel.text = DateFormatter.ampmFormatter.string(from: entry.createdAt)
         
         return tableViewCell
+    }
+}
+
+extension TimelineViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .normal, title:  nil) { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            
+            let date = self.dates[indexPath.section]
+            let entries = self.entries(for: date)
+            let entry = entries[indexPath.row]
+            
+            self.environment.entryRepository.remove(entry)
+            
+            if entries.count == 1 {
+                self.dates = self.dates.filter { $0 != date }
+            }
+            
+            UIView.animate(withDuration: 0.3) {
+                
+                tableView.beginUpdates()
+                
+                if entries.count == 1 {
+                    
+                    tableView.deleteSections(IndexSet.init(integer: indexPath.section), with: .automatic)
+                    
+                } else {
+                    
+                    tableView.deleteRows(at: [indexPath], with: .automatic)
+                    
+                }
+                
+                tableView.endUpdates()
+            }
+            
+            success(true)
+        }
+        
+        deleteAction.image = #imageLiteral(resourceName: "deleteIcon")
+        deleteAction.backgroundColor = UIColor.gradientEnd
+        
+        return UISwipeActionsConfiguration(actions:
+            [deleteAction]
+        )
     }
 }
 
