@@ -11,6 +11,9 @@
 		AE923928ED27132A63F57045 /* Pods_EverydayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E727F37A0864021547CC1109 /* Pods_EverydayTests.framework */; };
 		BA082D922127AE2E00AA7EE5 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA082D912127AE2E00AA7EE5 /* TimelineViewController.swift */; };
 		BA082D982127BA8D00AA7EE5 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA082D972127BA8D00AA7EE5 /* Environment.swift */; };
+		BA3BF8C3213126D700D6DBC5 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3BF8C2213126D700D6DBC5 /* SettingsTableViewController.swift */; };
+		BA3BF8C52131276C00D6DBC5 /* SettingsTableViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3BF8C42131276C00D6DBC5 /* SettingsTableViewViewModel.swift */; };
+		BA3BF8C7213128AF00D6DBC5 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3BF8C6213128AF00D6DBC5 /* Settings.swift */; };
 		BA650AD3210C4BC000B1AAD7 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA650AD2210C4BC000B1AAD7 /* Entry.swift */; };
 		BA650AD5210C54C400B1AAD7 /* EntryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA650AD4210C54C400B1AAD7 /* EntryRepository.swift */; };
 		BA650ADD210C57D800B1AAD7 /* EverydayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA650ADC210C57D800B1AAD7 /* EverydayTests.swift */; };
@@ -27,6 +30,7 @@
 		BABF1FB22130E75B009ED278 /* EntryViewViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABF1FB12130E75B009ED278 /* EntryViewViewModelTests.swift */; };
 		BABF1FB421310192009ED278 /* TimelineViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABF1FB321310192009ED278 /* TimelineViewViewModel.swift */; };
 		BACB2D7E2122FE7600D068C9 /* EntryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACB2D7D2122FE7600D068C9 /* EntryTests.swift */; };
+		BAD074BB213139D40010833D /* UserDefaultsSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD074BA213139D40010833D /* UserDefaultsSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +50,9 @@
 		9B5C9012C7CEA9256654B6AA /* Pods-EverydayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EverydayTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EverydayTests/Pods-EverydayTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BA082D912127AE2E00AA7EE5 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		BA082D972127BA8D00AA7EE5 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		BA3BF8C2213126D700D6DBC5 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		BA3BF8C42131276C00D6DBC5 /* SettingsTableViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewViewModel.swift; sourceTree = "<group>"; };
+		BA3BF8C6213128AF00D6DBC5 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		BA650AD2210C4BC000B1AAD7 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		BA650AD4210C54C400B1AAD7 /* EntryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryRepository.swift; sourceTree = "<group>"; };
 		BA650ADA210C57D800B1AAD7 /* EverydayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EverydayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,6 +73,7 @@
 		BABF1FB12130E75B009ED278 /* EntryViewViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewViewModelTests.swift; sourceTree = "<group>"; };
 		BABF1FB321310192009ED278 /* TimelineViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewViewModel.swift; sourceTree = "<group>"; };
 		BACB2D7D2122FE7600D068C9 /* EntryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryTests.swift; sourceTree = "<group>"; };
+		BAD074BA213139D40010833D /* UserDefaultsSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsSettings.swift; sourceTree = "<group>"; };
 		E727F37A0864021547CC1109 /* Pods_EverydayTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EverydayTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC5C830E360BC814557BB7BE /* Pods-EverydayTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EverydayTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EverydayTests/Pods-EverydayTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,6 +123,7 @@
 			children = (
 				BA650AD2210C4BC000B1AAD7 /* Entry.swift */,
 				BA650AD4210C54C400B1AAD7 /* EntryRepository.swift */,
+				BAD074BA213139D40010833D /* UserDefaultsSettings.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -196,6 +205,8 @@
 				BAA9BA602127F9A0000D5C54 /* EntryTableViewCell.swift */,
 				BABF1FAF2130E642009ED278 /* EntryViewViewModel.swift */,
 				BABF1FB321310192009ED278 /* TimelineViewViewModel.swift */,
+				BA3BF8C2213126D700D6DBC5 /* SettingsTableViewController.swift */,
+				BA3BF8C42131276C00D6DBC5 /* SettingsTableViewViewModel.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -208,6 +219,7 @@
 				BA9ED6FD211EC65F00155C20 /* UIKit+Everyday.swift */,
 				BA082D972127BA8D00AA7EE5 /* Environment.swift */,
 				BAA9BA622127FEDB000D5C54 /* Foundation+Journal.swift */,
+				BA3BF8C6213128AF00D6DBC5 /* Settings.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -403,6 +415,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAA9BA632127FEDB000D5C54 /* Foundation+Journal.swift in Sources */,
+				BA3BF8C3213126D700D6DBC5 /* SettingsTableViewController.swift in Sources */,
 				BA650AD3210C4BC000B1AAD7 /* Entry.swift in Sources */,
 				BA082D982127BA8D00AA7EE5 /* Environment.swift in Sources */,
 				BA9ED6FE211EC65F00155C20 /* UIKit+Everyday.swift in Sources */,
@@ -410,8 +423,11 @@
 				BA6B2042210B477F00519C35 /* EntryViewController.swift in Sources */,
 				BA650AD5210C54C400B1AAD7 /* EntryRepository.swift in Sources */,
 				BA082D922127AE2E00AA7EE5 /* TimelineViewController.swift in Sources */,
+				BA3BF8C7213128AF00D6DBC5 /* Settings.swift in Sources */,
 				BABF1FB421310192009ED278 /* TimelineViewViewModel.swift in Sources */,
+				BA3BF8C52131276C00D6DBC5 /* SettingsTableViewViewModel.swift in Sources */,
 				BAA9BA612127F9A0000D5C54 /* EntryTableViewCell.swift in Sources */,
+				BAD074BB213139D40010833D /* UserDefaultsSettings.swift in Sources */,
 				BA650AE5211540E700B1AAD7 /* Identifiable.swift in Sources */,
 				BA6B2040210B477F00519C35 /* AppDelegate.swift in Sources */,
 			);
