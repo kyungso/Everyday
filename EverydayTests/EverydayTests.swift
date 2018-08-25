@@ -150,15 +150,15 @@ class EverydayTests: XCTestCase {
         expect(entries) == [today, yesterDay, dayBeforeYesterday]
     }
     
-    func testJournalReturnsNilWhenMaxIsNegative() {
-        // Setup
-        let journal = InMemoryEntryRepository()
-        
-        // Run
-        let entries = journal.recentEntries(max: -10)
-        
-        // Verify
-        expect(entries).to(beEmpty())
-    }
+//    func testJournalReturnsNilWhenMaxIsNegative() {
+//        // Setup
+//        let journal = InMemoryEntryRepository()
+//        
+//        // Run
+//        let entries = journal.recentEntries(max: -10)
+//        
+//        // Verify
+//        expect(entries).to(beEmpty())
+//    }
     
 }

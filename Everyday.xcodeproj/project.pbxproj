@@ -23,6 +23,9 @@
 		BA9ED702211ECA4D00155C20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA9ED701211ECA4D00155C20 /* Assets.xcassets */; };
 		BAA9BA612127F9A0000D5C54 /* EntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA9BA602127F9A0000D5C54 /* EntryTableViewCell.swift */; };
 		BAA9BA632127FEDB000D5C54 /* Foundation+Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA9BA622127FEDB000D5C54 /* Foundation+Journal.swift */; };
+		BABF1FB02130E642009ED278 /* EntryViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABF1FAF2130E642009ED278 /* EntryViewViewModel.swift */; };
+		BABF1FB22130E75B009ED278 /* EntryViewViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABF1FB12130E75B009ED278 /* EntryViewViewModelTests.swift */; };
+		BABF1FB421310192009ED278 /* TimelineViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABF1FB321310192009ED278 /* TimelineViewViewModel.swift */; };
 		BACB2D7E2122FE7600D068C9 /* EntryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACB2D7D2122FE7600D068C9 /* EntryTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +62,9 @@
 		BA9ED701211ECA4D00155C20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BAA9BA602127F9A0000D5C54 /* EntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryTableViewCell.swift; sourceTree = "<group>"; };
 		BAA9BA622127FEDB000D5C54 /* Foundation+Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Foundation+Journal.swift"; sourceTree = "<group>"; };
+		BABF1FAF2130E642009ED278 /* EntryViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewViewModel.swift; sourceTree = "<group>"; };
+		BABF1FB12130E75B009ED278 /* EntryViewViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewViewModelTests.swift; sourceTree = "<group>"; };
+		BABF1FB321310192009ED278 /* TimelineViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewViewModel.swift; sourceTree = "<group>"; };
 		BACB2D7D2122FE7600D068C9 /* EntryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryTests.swift; sourceTree = "<group>"; };
 		E727F37A0864021547CC1109 /* Pods_EverydayTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EverydayTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC5C830E360BC814557BB7BE /* Pods-EverydayTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EverydayTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EverydayTests/Pods-EverydayTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -118,6 +124,7 @@
 			children = (
 				BA650ADC210C57D800B1AAD7 /* EverydayTests.swift */,
 				BACB2D7D2122FE7600D068C9 /* EntryTests.swift */,
+				BABF1FB12130E75B009ED278 /* EntryViewViewModelTests.swift */,
 				BA650ADE210C57D800B1AAD7 /* Info.plist */,
 			);
 			path = EverydayTests;
@@ -187,6 +194,8 @@
 				BA6B2041210B477F00519C35 /* EntryViewController.swift */,
 				BA082D912127AE2E00AA7EE5 /* TimelineViewController.swift */,
 				BAA9BA602127F9A0000D5C54 /* EntryTableViewCell.swift */,
+				BABF1FAF2130E642009ED278 /* EntryViewViewModel.swift */,
+				BABF1FB321310192009ED278 /* TimelineViewViewModel.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -385,6 +394,7 @@
 			files = (
 				BACB2D7E2122FE7600D068C9 /* EntryTests.swift in Sources */,
 				BA650ADD210C57D800B1AAD7 /* EverydayTests.swift in Sources */,
+				BABF1FB22130E75B009ED278 /* EntryViewViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,9 +406,11 @@
 				BA650AD3210C4BC000B1AAD7 /* Entry.swift in Sources */,
 				BA082D982127BA8D00AA7EE5 /* Environment.swift in Sources */,
 				BA9ED6FE211EC65F00155C20 /* UIKit+Everyday.swift in Sources */,
+				BABF1FB02130E642009ED278 /* EntryViewViewModel.swift in Sources */,
 				BA6B2042210B477F00519C35 /* EntryViewController.swift in Sources */,
 				BA650AD5210C54C400B1AAD7 /* EntryRepository.swift in Sources */,
 				BA082D922127AE2E00AA7EE5 /* TimelineViewController.swift in Sources */,
+				BABF1FB421310192009ED278 /* TimelineViewViewModel.swift in Sources */,
 				BAA9BA612127F9A0000D5C54 /* EntryTableViewCell.swift in Sources */,
 				BA650AE5211540E700B1AAD7 /* Identifiable.swift in Sources */,
 				BA6B2040210B477F00519C35 /* AppDelegate.swift in Sources */,
