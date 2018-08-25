@@ -36,15 +36,14 @@ class TimelineViewController: UIViewController {
         switch identifier {
         case "addEntry":
             if let entryVC = segue.destination as? EntryViewController {
-                entryVC.environmnet = environment
+                entryVC.viewModel = EntryViewViewModel(environment: environment)
                 entryVC.delegate = self
             }
         case "showEntry":
             if
                 let entryVC = segue.destination as? EntryViewController,
                 let selectedIndexPath = tableview.indexPathForSelectedRow {
-                entryVC.environmnet = environment
-                entryVC.editingEntry = entry(for: selectedIndexPath)
+                entryVC.viewModel = EntryViewViewModel(environment: environment, entry: entry(for: selectedIndexPath))
                 entryVC.delegate = self
             }
         default:
@@ -98,6 +97,7 @@ extension TimelineViewController: UITableViewDataSource {
         
         return tableViewCell
     }
+
 }
 
 extension TimelineViewController: UITableViewDelegate {

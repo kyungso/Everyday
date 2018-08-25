@@ -19,22 +19,17 @@ class EntryViewController: UIViewController {
     @IBOutlet weak var button: UIBarButtonItem!
     @IBOutlet weak var removeButton: UIBarButtonItem!
     
-    var environmnet: Environment!
+    var viewModel: EntryViewViewModel!
+    var environment: Environment!
     weak var delegate: EntryViewControllerDelegate?
-    
-    var journal: EntryRepository { return environmnet.entryRepository }
-    var editingEntry: Entry?
-    var hasEntry: Bool { return editingEntry != nil }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let date: Date = editingEntry?.createdAt ?? Date()
+        title = viewModel.title
+        textView.text = viewModel.textViewText
         
-        title = DateFormatter.entryDateFormatter.string(from: date)
-        textView.text = editingEntry?.text
-        
-        updateSubviews(for: hasEntry == false)
+        updateSubviews(for: viewModel.hasEntry == false)
         
         NotificationCenter.default
             .addObserver(self,
@@ -77,29 +72,23 @@ class EntryViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if hasEntry == false { textView.becomeFirstResponder() }
+        if viewModel.hasEntry == false { textView.becomeFirstResponder() }
     }
     
     @objc func saveEntry(_ sender: UIButton) {
-        if let editing = editingEntry {
-            editing.text = textView.text
-            journal.update(editing)
-        }else {
-            let entry: Entry = Entry(text: textView.text)
-            journal.add(entry)
-            editingEntry = entry
-        }
+        viewModel.completeEditing(with: textView.text)
         updateSubviews(for: false)
         textView.resignFirstResponder()
     }
     
     @objc func editEntry(_ sender: UIButton) {
+        viewModel.startEditing()
         updateSubviews(for: true)
         textView.becomeFirstResponder()
     }
     
     @IBAction func removeEntry(_ sender: Any) {
-        guard let entryToRemove = editingEntry else { return }
+        guard viewModel.hasEntry else { return }
         
         let alertController = UIAlertController(
             title: "현재 일기를 삭제할까요?",
@@ -110,11 +99,12 @@ class EntryViewController: UIViewController {
         let removeAction: UIAlertAction = UIAlertAction(
             title: "삭제",
             style: .destructive) { (_) in
-                self.environmnet.entryRepository.remove(entryToRemove)
-                self.editingEntry = nil
+                guard
+                    let removedEntry = self.viewModel.removeEntry()
+                    else { return }
                 
                 // pop
-                self.delegate?.didRemoveEntry(entryToRemove)
+                self.delegate?.didRemoveEntry(removedEntry)
         }
         alertController.addAction(removeAction)
         
@@ -129,13 +119,12 @@ class EntryViewController: UIViewController {
     }
     
     private func updateSubviews(for isEditing: Bool) {
-        textView.isEditable = true
+        textView.isEditable = viewModel.textViewEditiable
+        removeButton.isEnabled = viewModel.removeButtonEnabled
+        button.image = viewModel.buttonImage
         
-        removeButton.isEnabled = hasEntry
-        
-        button.image = isEditing ? #imageLiteral(resourceName: "saveIcon") : #imageLiteral(resourceName: "editIcon")
         button.target = self
-        button.action = isEditing
+        button.action = viewModel.isEditing
             ? #selector(saveEntry(_:))
             : #selector(editEntry(_:))
     }
