@@ -27,6 +27,11 @@ class TimelineViewController: UIViewController {
                 let selectedIndexPath = tableview.indexPathForSelectedRow {
                 entryVC.viewModel = viewModel.entryViewViewModel(for: selectedIndexPath)
             }
+        case "showSetting":
+            if
+                let settingsVC = segue.destination as? SettingsTableViewController {
+                settingsVC.viewModel = viewModel.settingsViewModel
+            }
         default:
             break
         }

@@ -161,6 +161,11 @@
                         <viewLayoutGuide key="safeArea" id="gQ6-0t-AnZ"/>
                     </view>
                     <navigationItem key="navigationItem" id="N5C-b8-KLX">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="settingsIcon" id="1iV-9u-ed7">
+                            <connections>
+                                <segue destination="pey-ha-g4o" kind="show" identifier="showSetting" id="KOz-h1-7sv"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="VUC-5N-O4o">
                             <connections>
                                 <segue destination="BYZ-38-t0r" kind="show" identifier="addEntry" id="fMy-zT-DBU"/>
@@ -175,9 +180,47 @@
             </objects>
             <point key="canvasLocation" x="1117.5999999999999" y="132.68365817091455"/>
         </scene>
+        <!--설정-->
+        <scene sceneID="SH9-DX-kHY">
+            <objects>
+                <tableViewController title="설정" id="pey-ha-g4o" customClass="SettingsTableViewController" customModule="Everyday" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="zPc-A2-E2c">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="SettingItemCell" textLabel="WzR-DD-Yym" style="IBUITableViewCellStyleDefault" id="hqP-XV-Pxm">
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hqP-XV-Pxm" id="nY7-z5-m1R">
+                                    <rect key="frame" x="0.0" y="0.0" width="335" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WzR-DD-Yym">
+                                            <rect key="frame" x="16" y="0.0" width="319" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="pey-ha-g4o" id="heO-CY-nX7"/>
+                            <outlet property="delegate" destination="pey-ha-g4o" id="LEU-t2-eHt"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3uG-DI-h2g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1118" y="951"/>
+        </scene>
     </scenes>
     <resources>
         <image name="deleteIcon" width="24" height="24"/>
+        <image name="settingsIcon" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="NrL-vJ-VWw"/>
