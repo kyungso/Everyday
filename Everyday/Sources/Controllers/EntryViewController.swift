@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol EntryViewControllerDelegate: class {
-    func didRemoveEntry(_ entry: Entry)
-}
-
 class EntryViewController: UIViewController {
 
     @IBOutlet weak var textView: UITextView!
@@ -20,9 +16,7 @@ class EntryViewController: UIViewController {
     @IBOutlet weak var removeButton: UIBarButtonItem!
     
     var viewModel: EntryViewViewModel!
-    var environment: Environment!
-    weak var delegate: EntryViewControllerDelegate?
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -100,11 +94,11 @@ class EntryViewController: UIViewController {
             title: "삭제",
             style: .destructive) { (_) in
                 guard
-                    let removedEntry = self.viewModel.removeEntry()
+                    let _ = self.viewModel.removeEntry()
                     else { return }
                 
                 // pop
-                self.delegate?.didRemoveEntry(removedEntry)
+                self.navigationController?.popViewController(animated: true)
         }
         alertController.addAction(removeAction)
         
