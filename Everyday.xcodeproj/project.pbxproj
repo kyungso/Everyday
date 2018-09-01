@@ -32,6 +32,7 @@
 		BABF1FB421310192009ED278 /* TimelineViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABF1FB321310192009ED278 /* TimelineViewViewModel.swift */; };
 		BACB2D7E2122FE7600D068C9 /* EntryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACB2D7D2122FE7600D068C9 /* EntryTests.swift */; };
 		BAD074BB213139D40010833D /* UserDefaultsSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD074BA213139D40010833D /* UserDefaultsSettings.swift */; };
+		BAECF999213A1CAB000127A0 /* RealmEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAECF998213A1CAB000127A0 /* RealmEntry.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		BABF1FB321310192009ED278 /* TimelineViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewViewModel.swift; sourceTree = "<group>"; };
 		BACB2D7D2122FE7600D068C9 /* EntryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryTests.swift; sourceTree = "<group>"; };
 		BAD074BA213139D40010833D /* UserDefaultsSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsSettings.swift; sourceTree = "<group>"; };
+		BAECF998213A1CAB000127A0 /* RealmEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmEntry.swift; sourceTree = "<group>"; };
 		E727F37A0864021547CC1109 /* Pods_EverydayTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EverydayTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC5C830E360BC814557BB7BE /* Pods-EverydayTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EverydayTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EverydayTests/Pods-EverydayTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,6 +129,7 @@
 				BA650AD4210C54C400B1AAD7 /* EntryRepository.swift */,
 				BAD074BA213139D40010833D /* UserDefaultsSettings.swift */,
 				BA19F96E213A1A99002449AC /* RealmEntryRepository.swift */,
+				BAECF998213A1CAB000127A0 /* RealmEntry.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				BA082D982127BA8D00AA7EE5 /* Environment.swift in Sources */,
 				BA9ED6FE211EC65F00155C20 /* UIKit+Everyday.swift in Sources */,
 				BABF1FB02130E642009ED278 /* EntryViewViewModel.swift in Sources */,
+				BAECF999213A1CAB000127A0 /* RealmEntry.swift in Sources */,
 				BA6B2042210B477F00519C35 /* EntryViewController.swift in Sources */,
 				BA650AD5210C54C400B1AAD7 /* EntryRepository.swift in Sources */,
 				BA19F96F213A1A99002449AC /* RealmEntryRepository.swift in Sources */,
