@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,8 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        customizeNavigationBar()
+        FirebaseApp.configure()
         
+        customizeNavigationBar()
         injectEnvironment()
         
         return true
@@ -40,12 +42,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let navigationController = window?.rootViewController as? UINavigationController,
             let timelineViewController = navigationController.topViewController as? TimelineViewController {
             
-            let realm = try! Realm()
-            let repo = RealmEntryRepository(realm: realm)
+            let fbRepo = FirebaseEntryRepository()
             
             let env = Environment(
-                entryRepository: repo,
-                entryFactory: RealmEntry.entry,
+                entryRepository: fbRepo,
+                entryFactory: { Entry(text: $0) },
                 settings: UserDefaults.standard
             )
             print(Realm.Configuration.defaultConfiguration.fileURL!)

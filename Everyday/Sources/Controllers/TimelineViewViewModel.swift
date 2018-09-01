@@ -12,9 +12,7 @@ class TimelineViewViewModel {
     let environment: Environment
     
     private var dates: [Date] = []
-    private var entries: [EntryType] {
-        return environment.entryRepository.recentEntries(max: environment.entryRepository.numberOfEntries)
-    }
+    private var entries: [EntryType] = []
     private var filteredEntries: [EntryType] = []
 
     private func entries(for date: Date) -> [EntryType] {
@@ -33,7 +31,9 @@ class TimelineViewViewModel {
     
     init(environment: Environment) {
         self.environment = environment
-        dates = environment.entryRepository.uniqueDates
+        dates = self.entries
+            .compactMap { $0.createdAt.hmsRemoved }
+            .unique()
     }
     
     var searchText: String? {
@@ -106,22 +106,28 @@ extension TimelineViewViewModel {
 
 extension TimelineViewViewModel: EntryViewViewModelDelegate {
     func didAddEntry(_ entry: EntryType) {
-        dates = environment.entryRepository.uniqueDates
+        dates = self.entries
+            .compactMap { $0.createdAt.hmsRemoved }
+            .unique()
     }
     
     func didRemoveEntry(_ entry: EntryType) {
-        dates = environment.entryRepository.uniqueDates
+        dates = self.entries
+            .compactMap { $0.createdAt.hmsRemoved }
+            .unique()
     }
 }
 
-extension EntryRepository {
-    var allEntries: [EntryType] {
-        return recentEntries(max: numberOfEntries)
-    }
-    
-    var uniqueDates: [Date] {
-        return allEntries
-            .compactMap { $0.createdAt.hmsRemoved }
-            .unique()
+extension TimelineViewViewModel {
+    func loadEntries(completion: @escaping () -> Void) {
+        entries = []
+        
+        environment.entryRepository.recentEntries(max: 10) { [weak self] (entries) in
+            self?.entries = entries
+            self?.dates = entries
+                .compactMap { $0.createdAt.hmsRemoved }
+                .unique()
+            completion()
+        }
     }
 }

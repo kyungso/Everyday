@@ -27,6 +27,8 @@
 		BA9ED702211ECA4D00155C20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA9ED701211ECA4D00155C20 /* Assets.xcassets */; };
 		BAA9BA612127F9A0000D5C54 /* EntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA9BA602127F9A0000D5C54 /* EntryTableViewCell.swift */; };
 		BAA9BA632127FEDB000D5C54 /* Foundation+Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA9BA622127FEDB000D5C54 /* Foundation+Journal.swift */; };
+		BAB85FB1213A559E00BD4BB6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BAB85FB0213A559E00BD4BB6 /* GoogleService-Info.plist */; };
+		BAB85FB3213A575600BD4BB6 /* FirebaseEntryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB85FB2213A575600BD4BB6 /* FirebaseEntryRepository.swift */; };
 		BABF1FB02130E642009ED278 /* EntryViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABF1FAF2130E642009ED278 /* EntryViewViewModel.swift */; };
 		BABF1FB22130E75B009ED278 /* EntryViewViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABF1FB12130E75B009ED278 /* EntryViewViewModelTests.swift */; };
 		BABF1FB421310192009ED278 /* TimelineViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABF1FB321310192009ED278 /* TimelineViewViewModel.swift */; };
@@ -72,6 +74,8 @@
 		BA9ED701211ECA4D00155C20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BAA9BA602127F9A0000D5C54 /* EntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryTableViewCell.swift; sourceTree = "<group>"; };
 		BAA9BA622127FEDB000D5C54 /* Foundation+Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Foundation+Journal.swift"; sourceTree = "<group>"; };
+		BAB85FB0213A559E00BD4BB6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BAB85FB2213A575600BD4BB6 /* FirebaseEntryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseEntryRepository.swift; sourceTree = "<group>"; };
 		BABF1FAF2130E642009ED278 /* EntryViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewViewModel.swift; sourceTree = "<group>"; };
 		BABF1FB12130E75B009ED278 /* EntryViewViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewViewModelTests.swift; sourceTree = "<group>"; };
 		BABF1FB321310192009ED278 /* TimelineViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewViewModel.swift; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 				BAD074BA213139D40010833D /* UserDefaultsSettings.swift */,
 				BAECF998213A1CAB000127A0 /* RealmEntry.swift */,
 				BA19F96E213A1A99002449AC /* RealmEntryRepository.swift */,
+				BAB85FB2213A575600BD4BB6 /* FirebaseEntryRepository.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -199,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				BA9ED701211ECA4D00155C20 /* Assets.xcassets */,
+				BAB85FB0213A559E00BD4BB6 /* GoogleService-Info.plist */,
 				BA6B204B210B478000519C35 /* Info.plist */,
 			);
 			path = Resources;
@@ -323,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA6B204A210B478000519C35 /* LaunchScreen.storyboard in Resources */,
+				BAB85FB1213A559E00BD4BB6 /* GoogleService-Info.plist in Resources */,
 				BA9ED702211ECA4D00155C20 /* Assets.xcassets in Resources */,
 				BA6B2045210B477F00519C35 /* Main.storyboard in Resources */,
 			);
@@ -356,15 +363,21 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Everyday/Pods-Everyday-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -428,6 +441,7 @@
 				BA3BF8C3213126D700D6DBC5 /* SettingsTableViewController.swift in Sources */,
 				BA650AD3210C4BC000B1AAD7 /* Entry.swift in Sources */,
 				BA082D982127BA8D00AA7EE5 /* Environment.swift in Sources */,
+				BAB85FB3213A575600BD4BB6 /* FirebaseEntryRepository.swift in Sources */,
 				BA9ED6FE211EC65F00155C20 /* UIKit+Everyday.swift in Sources */,
 				BABF1FB02130E642009ED278 /* EntryViewViewModel.swift in Sources */,
 				BAECF999213A1CAB000127A0 /* RealmEntry.swift in Sources */,
