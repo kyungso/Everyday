@@ -23,9 +23,10 @@ class RealmEntryRepository: EntryRepository {
         }
     }
     
-    func update(_ entry: EntryType) {
+    func update(_ entry: EntryType, text: String) {
         guard let realmEntry = entry as? RealmEntry else { fatalError() }
         try! realm.write {
+            realmEntry.text = text
             realm.add(realmEntry, update: true)
         }
     }
@@ -39,6 +40,14 @@ class RealmEntryRepository: EntryRepository {
     
     var numberOfEntries: Int {
         return realm.objects(RealmEntry.self).count
+    }
+    
+    func entries(contains string: String) -> [EntryType] {
+        let results = realm.objects(RealmEntry.self)
+            .filter("text CONTAINS[c] '\(string)'")
+            .sorted(byKeyPath: "createdAt", ascending: false)
+        
+        return Array(results)
     }
     
     func entry(with id: UUID) -> EntryType? {

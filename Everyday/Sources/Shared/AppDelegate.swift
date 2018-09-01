@@ -41,18 +41,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let timelineViewController = navigationController.topViewController as? TimelineViewController {
             
             let realm = try! Realm()
-            let realmEntryRepo = RealmEntryRepository(realm: realm)
-            let realmEntryFactory: (String) -> RealmEntry = { (text: String) -> RealmEntry in
-                let entry = RealmEntry()
-                entry.uuidString = UUID().uuidString
-                entry.createdAt = Date()
-                entry.text = text
-                return entry
-            }
+            let repo = RealmEntryRepository(realm: realm)
             
             let env = Environment(
-                entryRepository: realmEntryRepo,
-                entryFactory: realmEntryFactory,
+                entryRepository: repo,
+                entryFactory: RealmEntry.entry,
                 settings: UserDefaults.standard
             )
             print(Realm.Configuration.defaultConfiguration.fileURL!)

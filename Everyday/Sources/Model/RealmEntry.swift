@@ -24,3 +24,14 @@ class RealmEntry: Object, EntryType {
     }
 }
 
+extension RealmEntry {
+    static func entry(with text: String) -> RealmEntry {
+        let realmEntry = RealmEntry()
+        
+        realmEntry.uuidString = UUID().uuidString
+        realmEntry.text = text
+        realmEntry.createdAt = Date()
+        
+        return realmEntry
+    }
+}

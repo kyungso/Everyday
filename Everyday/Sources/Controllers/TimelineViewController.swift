@@ -54,6 +54,8 @@ class TimelineViewController: UIViewController {
         searchController.searchResultsUpdater = self
         
         navigationItem.searchController = searchController
+        
+         definesPresentationContext = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -62,6 +64,14 @@ class TimelineViewController: UIViewController {
         tableview.reloadData()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if searchController.isActive {
+            viewModel.searchText = nil
+            searchController.isActive = false
+        }
+    }
 }
     
 extension TimelineViewController: UITableViewDataSource {
@@ -78,9 +88,8 @@ extension TimelineViewController: UITableViewDataSource {
     }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tableViewCell = tableview.dequeueReusableCell(withIdentifier: "EntryCell", for: indexPath) as! EntryTableViewCell
-        tableViewCell.viewModel = viewModel.entryTableViewCellModel(for: indexPath)
-        
+        let tableViewCell = tableview.dequeueReusableCell(withIdentifier: "EntryTableViewCell", for: indexPath) as! EntryTableViewCell
+        tableViewCell.viewModel = viewModel.entryTableViewCellViewModel(for: indexPath)
         return tableViewCell
     }
 
@@ -88,6 +97,8 @@ extension TimelineViewController: UITableViewDataSource {
 
 extension TimelineViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard searchController.isActive == false else { return UISwipeActionsConfiguration(actions: []) }
+        
         let deleteAction = UIContextualAction(style: .normal, title:  nil) { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             
             let isLastRowInSection = self.viewModel.numberOfRows(in: indexPath.section) == 1
@@ -121,10 +132,7 @@ extension TimelineViewController: UITableViewDelegate {
 
 extension TimelineViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        guard
-            let searchText = searchController.searchBar.text,
-            searchText.isEmpty == false
-            else { return }
+        guard let searchText = searchController.searchBar.text else { return }
         
         viewModel.searchText = searchText
         tableview.reloadData()

@@ -15,7 +15,7 @@ class Environment {
     let now: () -> Date
     
     init(entryRepository: EntryRepository = InMemoryEntryRepository(),
-         entryFactory: @escaping (String) -> EntryType = { Entry(text: $0) },
+         entryFactory: @escaping (String) -> EntryType = { (text: String) -> EntryType in Entry(text: text) },
          settings: Settings = InMemorySettings(),
          now: @escaping () -> Date = Date.init
         ) {
