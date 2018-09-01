@@ -201,9 +201,9 @@
 			isa = PBXGroup;
 			children = (
 				BA6B2041210B477F00519C35 /* EntryViewController.swift */,
-				BA082D912127AE2E00AA7EE5 /* TimelineViewController.swift */,
 				BAA9BA602127F9A0000D5C54 /* EntryTableViewCell.swift */,
 				BABF1FAF2130E642009ED278 /* EntryViewViewModel.swift */,
+				BA082D912127AE2E00AA7EE5 /* TimelineViewController.swift */,
 				BABF1FB321310192009ED278 /* TimelineViewViewModel.swift */,
 				BA3BF8C2213126D700D6DBC5 /* SettingsTableViewController.swift */,
 				BA3BF8C42131276C00D6DBC5 /* SettingsTableViewViewModel.swift */,
