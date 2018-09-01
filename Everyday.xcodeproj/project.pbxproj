@@ -11,6 +11,7 @@
 		AE923928ED27132A63F57045 /* Pods_EverydayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E727F37A0864021547CC1109 /* Pods_EverydayTests.framework */; };
 		BA082D922127AE2E00AA7EE5 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA082D912127AE2E00AA7EE5 /* TimelineViewController.swift */; };
 		BA082D982127BA8D00AA7EE5 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA082D972127BA8D00AA7EE5 /* Environment.swift */; };
+		BA19F96F213A1A99002449AC /* RealmEntryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA19F96E213A1A99002449AC /* RealmEntryRepository.swift */; };
 		BA3BF8C3213126D700D6DBC5 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3BF8C2213126D700D6DBC5 /* SettingsTableViewController.swift */; };
 		BA3BF8C52131276C00D6DBC5 /* SettingsTableViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3BF8C42131276C00D6DBC5 /* SettingsTableViewViewModel.swift */; };
 		BA3BF8C7213128AF00D6DBC5 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3BF8C6213128AF00D6DBC5 /* Settings.swift */; };
@@ -50,6 +51,7 @@
 		9B5C9012C7CEA9256654B6AA /* Pods-EverydayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EverydayTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EverydayTests/Pods-EverydayTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BA082D912127AE2E00AA7EE5 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		BA082D972127BA8D00AA7EE5 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		BA19F96E213A1A99002449AC /* RealmEntryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmEntryRepository.swift; sourceTree = "<group>"; };
 		BA3BF8C2213126D700D6DBC5 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		BA3BF8C42131276C00D6DBC5 /* SettingsTableViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewViewModel.swift; sourceTree = "<group>"; };
 		BA3BF8C6213128AF00D6DBC5 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				BA650AD2210C4BC000B1AAD7 /* Entry.swift */,
 				BA650AD4210C54C400B1AAD7 /* EntryRepository.swift */,
 				BAD074BA213139D40010833D /* UserDefaultsSettings.swift */,
+				BA19F96E213A1A99002449AC /* RealmEntryRepository.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				BABF1FB02130E642009ED278 /* EntryViewViewModel.swift in Sources */,
 				BA6B2042210B477F00519C35 /* EntryViewController.swift in Sources */,
 				BA650AD5210C54C400B1AAD7 /* EntryRepository.swift in Sources */,
+				BA19F96F213A1A99002449AC /* RealmEntryRepository.swift in Sources */,
 				BA082D922127AE2E00AA7EE5 /* TimelineViewController.swift in Sources */,
 				BA3BF8C7213128AF00D6DBC5 /* Settings.swift in Sources */,
 				BABF1FB421310192009ED278 /* TimelineViewViewModel.swift in Sources */,
