@@ -55,6 +55,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 entryFactory: realmEntryFactory,
                 settings: UserDefaults.standard
             )
+            print(Realm.Configuration.defaultConfiguration.fileURL!)
+            
             timelineViewController.viewModel = TimelineViewViewModel(environment: env)
         }
     }
