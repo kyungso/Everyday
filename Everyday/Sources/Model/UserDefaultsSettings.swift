@@ -19,7 +19,6 @@ extension UserDefaults: Settings {
         }
         set {
             set(newValue.rawValue, forKey: dateFormatOptionKey)
-            synchronize()
         }
     }
     
@@ -38,7 +37,6 @@ extension UserDefaults: Settings {
         }
         set {
             set(newValue.rawValue, forKey: fontSizeOptionKey)
-            synchronize()
         }
     }
 }
