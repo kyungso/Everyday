@@ -128,8 +128,8 @@
 				BA650AD2210C4BC000B1AAD7 /* Entry.swift */,
 				BA650AD4210C54C400B1AAD7 /* EntryRepository.swift */,
 				BAD074BA213139D40010833D /* UserDefaultsSettings.swift */,
-				BA19F96E213A1A99002449AC /* RealmEntryRepository.swift */,
 				BAECF998213A1CAB000127A0 /* RealmEntry.swift */,
+				BA19F96E213A1A99002449AC /* RealmEntryRepository.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
