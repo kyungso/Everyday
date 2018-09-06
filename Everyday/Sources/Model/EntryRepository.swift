@@ -17,7 +17,7 @@ protocol EntryRepository {
     func entries(contains string: String) -> [EntryType]
     func entry(with id: UUID) -> EntryType?
     
-    func recentEntries(max: Int, completion: @escaping ([EntryType]) -> Void)
+    func recentEntries(max: Int, page: Int, completion: @escaping ([EntryType], Bool) -> ())
 }
 
 class InMemoryEntryRepository: EntryRepository{
@@ -64,13 +64,13 @@ class InMemoryEntryRepository: EntryRepository{
     func entry(with id: UUID) -> EntryType?{
         return entries[id]
     }
-    func recentEntries(max: Int, completion: @escaping ([EntryType]) -> Void) {
+     func recentEntries(max: Int, page: Int, completion: @escaping ([EntryType], Bool) -> ()) {
         let result = entries
             .values
             .sorted{ $0.createdAt > $1.createdAt }
             .prefix(max)
         
-        completion(Array(result))
+        completion(Array(result), true)
     }
 }
 

@@ -42,14 +42,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let navigationController = window?.rootViewController as? UINavigationController,
             let timelineViewController = navigationController.topViewController as? TimelineViewController {
             
-            let fbRepo = FirebaseEntryRepository()
+            let repo = FirebaseEntryRepository()
             
             let env = Environment(
-                entryRepository: fbRepo,
-                entryFactory: { Entry(text: $0) },
+                entryRepository: repo,
                 settings: UserDefaults.standard
             )
-            print(Realm.Configuration.defaultConfiguration.fileURL!)
             
             timelineViewController.viewModel = TimelineViewViewModel(environment: env)
         }

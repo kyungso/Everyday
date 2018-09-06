@@ -48,7 +48,7 @@ class TimelineViewController: UIViewController {
         tableview.delegate = self
         //tableview.dataSource = self
         
-        searchController.searchBar.placeholder = "일기 검색"
+        searchController.searchBar.placeholder = "검색어를 입력하세요"
         searchController.searchBar.tintColor = .white
         searchController.searchBar.autocapitalizationType = .none
         searchController.obscuresBackgroundDuringPresentation = false
@@ -72,7 +72,7 @@ class TimelineViewController: UIViewController {
         
         loadingIndicator.startAnimating()
         
-        viewModel.loadEntries { [weak self] in
+        viewModel.refreshEntries { [weak self] in
             self?.tableview.reloadData()
             self?.loadingIndicator.stopAnimating()
         }
@@ -116,12 +116,13 @@ extension TimelineViewController: UITableViewDelegate {
         let cellHeight: CGFloat = 80
         let threshold: CGFloat = scrollView.contentSize.height - scrollView.frame.size.height - cellHeight
         
-        guard scrollPosition > threshold && viewModel.isLoading == false else { return }
+        if scrollPosition > threshold && viewModel.isLoading == false && viewModel.isLastPage == false {
         
-        loadingIndicator.startAnimating()
-        viewModel.loadEntries { [weak self] in
-            self?.tableview.reloadData()
-            self?.loadingIndicator.stopAnimating()
+            loadingIndicator.startAnimating()
+            viewModel.loadMoreEntries { [weak self] in
+                self?.tableview.reloadData()
+                self?.loadingIndicator.stopAnimating()
+            }
         }
     }
     

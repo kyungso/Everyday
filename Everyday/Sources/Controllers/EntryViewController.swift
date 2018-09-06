@@ -47,7 +47,7 @@ class EntryViewController: UIViewController {
             let userInfo = note.userInfo,
             let keyboardFrameValue = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue),
             let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval),
-            let animationCurve = (userInfo[UIKeyboardAnimationCurveUserInfoKey] as? UInt)
+            let curve = (userInfo[UIKeyboardAnimationCurveUserInfoKey] as? UInt)
             else { return }
         
         let isKeyboardWillShow: Bool = note.name == Notification.Name.UIKeyboardWillShow
@@ -55,7 +55,7 @@ class EntryViewController: UIViewController {
             ? keyboardFrameValue.cgRectValue.height
             : 0
         
-        let animationOption = UIViewAnimationOptions.init(rawValue: animationCurve)
+        let animationOption = UIViewAnimationOptions.init(rawValue: curve)
         
         UIView.animate(
             withDuration: duration,
@@ -71,7 +71,7 @@ class EntryViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if viewModel.isEditing == false { textView.becomeFirstResponder() }
+        if viewModel.isEditing { textView.becomeFirstResponder() }
     }
     
     @objc func saveEntry(_ sender: UIButton) {
