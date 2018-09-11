@@ -82,8 +82,18 @@ class TimelineViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         if searchController.isActive {
-            viewModel.searchText = nil
+            viewModel.endSearching()
             searchController.isActive = false
+        }
+    }
+    
+    
+    func willDismissSearchController(_ searchController: UISearchController) {
+        self.viewModel.endSearching()
+        self.loadingIndicator.startAnimating()
+        viewModel.loadMoreEntries { [weak self] in
+            self?.tableview.reloadData()
+            self?.loadingIndicator.stopAnimating()
         }
     }
 }
@@ -116,14 +126,13 @@ extension TimelineViewController: UITableViewDelegate {
         let cellHeight: CGFloat = 80
         let threshold: CGFloat = scrollView.contentSize.height - scrollView.frame.size.height - cellHeight
         
-        if scrollPosition > threshold && viewModel.isLoading == false && viewModel.isLastPage == false {
+        guard scrollPosition > threshold && viewModel.isLoading == false && viewModel.isLastPage == false  else { return }
         
             loadingIndicator.startAnimating()
             viewModel.loadMoreEntries { [weak self] in
                 self?.tableview.reloadData()
                 self?.loadingIndicator.stopAnimating()
             }
-        }
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -162,9 +171,16 @@ extension TimelineViewController: UITableViewDelegate {
 
 extension TimelineViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        guard let searchText = searchController.searchBar.text else { return }
+        guard
+            let searchText = searchController.searchBar.text,
+            searchText.isEmpty == false,
+            viewModel.isLoading == false
+            else { return }
         
-        viewModel.searchText = searchText
-        tableview.reloadData()
+        self.loadingIndicator.startAnimating()
+        viewModel.searchText(text: searchText) { [weak self] in
+            self?.tableview.reloadData()
+            self?.loadingIndicator.stopAnimating()
+        }
     }
 }

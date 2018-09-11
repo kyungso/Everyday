@@ -24,17 +24,33 @@ class FirebaseEntryRepository: EntryRepository {
         reference.child(entry.id.uuidString).setValue(entry.toDitionary())
     }
     func update(_ entry: EntryType, text: String) {
-        reference.child(entry.id.uuidString).child("text").setValue(entry.text)
+        reference.child(entry.id.uuidString).child("text").setValue(text)
     }
     func remove(_ entry: EntryType) {
         reference.child(entry.id.uuidString).removeValue()
     }
-    func entries(contains string: String) -> [EntryType] {
-        return []
-    }
     func entry(with id: UUID) -> EntryType? {
         return nil
     }
+    
+    func entries(contains string: String, completion: @escaping ([EntryType]) -> Void) {
+        self.reference
+            .queryOrdered(byChild: "text")
+            .queryStarting(atValue: string)
+            .queryEnding(atValue: string + "\u{f8ff}")
+            .observeSingleEvent(of: .value) { snapshot in
+                let entries: [Entry] = snapshot.children.compactMap {
+                    guard
+                        let childSnapshot = $0 as? DataSnapshot,
+                        let dict = childSnapshot.value as? [String: Any],
+                        let entry = Entry(dictionary: dict)
+                        else { return nil }
+                    return entry
+                }
+                completion(entries)
+        }
+    }
+    
     private var oldestEntryCreatedAt: Double?
     
     func recentEntries(max: Int, page: Int, completion: @escaping ([EntryType], Bool) -> ()) {

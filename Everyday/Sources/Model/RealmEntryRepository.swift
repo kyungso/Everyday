@@ -42,12 +42,12 @@ class RealmEntryRepository: EntryRepository {
         return realm.objects(RealmEntry.self).count
     }
     
-    func entries(contains string: String) -> [EntryType] {
+    func entries(contains string: String, completion: @escaping ([EntryType]) -> Void) {
         let results = realm.objects(RealmEntry.self)
             .filter("text CONTAINS[c] '\(string)'")
             .sorted(byKeyPath: "createdAt", ascending: false)
         
-        return Array(results)
+        completion(Array(results))
     }
     
     func entry(with id: UUID) -> EntryType? {

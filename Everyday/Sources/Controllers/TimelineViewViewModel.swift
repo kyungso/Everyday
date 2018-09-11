@@ -15,24 +15,8 @@ class TimelineViewViewModel {
     private var entries: [EntryType] = []
     private var filteredEntries: [EntryType] = []
 
-    var searchText: String? {
-        didSet {
-            guard let text = searchText else {
-                filteredEntries = []
-                return
-            }
-            filteredEntries = environment.entryRepository.entries(contains: text)
-        }
-    }
-    
-    private(set) var isLoading: Bool = false
-    
     private var currentPage: Int = 0
     var isLastPage: Bool = false
-    
-    var isSearching: Bool {
-        return searchText?.isEmpty == false
-    }
     
     private func entries(for date: Date) -> [EntryType] {
         return entries
@@ -52,6 +36,25 @@ class TimelineViewViewModel {
         self.environment = environment
         dates = []
     }
+    
+    private var isSearching: Bool = false
+    
+    func searchText(text: String, completion: @escaping () -> Void) {
+        isSearching = true
+        isLoading = true
+        
+        environment.entryRepository.entries(contains: text, completion: { [weak self] entries in
+            self?.filteredEntries = entries
+            self?.isLoading = false
+            completion()
+        })
+    }
+    
+    func endSearching() {
+        isSearching = false
+    }
+    
+    private(set) var isLoading: Bool = false
     
     func removeEntry(at indexPath: IndexPath) {
         let date = dates[indexPath.section]
@@ -125,7 +128,8 @@ extension TimelineViewViewModel {
     func loadMoreEntries(completion: @escaping () -> Void) {
         isLoading = true
         
-        environment.entryRepository.recentEntries(max: 10, page: currentPage) { [weak self] entries, isLastPage in
+        environment.entryRepository.recentEntries(max: 5, page: currentPage) { [weak self] (entries, isLastPage) in
+            self?.isLoading = false
             self?.entries += entries
             self?.dates = entries
                 .compactMap { $0.createdAt.hmsRemoved }
@@ -133,7 +137,6 @@ extension TimelineViewViewModel {
             
             self?.currentPage += 1
             self?.isLastPage = isLastPage
-            self?.isLoading = false
             
             completion()
         }
@@ -144,7 +147,8 @@ extension TimelineViewViewModel {
         currentPage = 0
         isLastPage = false
         
-        environment.entryRepository.recentEntries(max: 10, page: currentPage) { [weak self] entries, isLastPage in
+        environment.entryRepository.recentEntries(max: 5, page: currentPage) { [weak self] (entries, isLastPage) in
+            self?.isLoading = false
             self?.entries = entries
             self?.dates = entries
                 .compactMap { $0.createdAt.hmsRemoved }
@@ -152,7 +156,6 @@ extension TimelineViewViewModel {
             
             self?.currentPage += 1
             self?.isLastPage = isLastPage
-            self?.isLoading = false
             
             completion()
         }
